@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-modpack_urls_all = []
-
 
 def get_urls_in_current_page(page_url):
     driver.get(page_url)
@@ -20,11 +18,11 @@ def get_urls_in_current_page(page_url):
         # 3+ = categories
         url = 'https://www.curseforge.com' + modpack_urls[MODPACK_NAME]['href']
         modpack_urls_all.append(url)
-        # driver.get(url)
 
 
 if __name__ == "__main__":
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
+    modpack_urls_all = []
 
     driver = webdriver.Chrome()
 
@@ -37,6 +35,5 @@ if __name__ == "__main__":
     for page_num in range(1, int(num_pages)):
         new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
         get_urls_in_current_page(new_page_url)
-    print(modpack_urls_all)
 
     driver.quit()
