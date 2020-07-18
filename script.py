@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+modpack_urls_all = []
+
 def get_urls_in_current_page(page_url):
     driver.get(page_url)
     driver.implicitly_wait(10)
@@ -28,8 +30,6 @@ if __name__ == "__main__":
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     pagination_items = soup.find_all('a', class_='pagination-item')
     num_pages = pagination_items[len(pagination_items)-1].text
-
-    modpack_urls_all = []
 
     for page_num in range(1, int(num_pages)):
         new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
