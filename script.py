@@ -3,21 +3,32 @@ from selenium import webdriver
 dependents_url = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
 
 driver = webdriver.Chrome()
+
 driver.get(dependents_url)
-
+driver.implicitly_wait(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
-modpack_list = soup.find_all('li', class_='project-listing-row box py-3 px-4 flex flex-col lg:flex-row lg:items-center mb-2')
+pagination_items = soup.find_all('a', class_='pagination-item')
+num_pages = pagination_items[len(pagination_items)-1].text
 
-for i in range(0, len(modpack_list)):
-    modpack_urls = modpack_list[i].find_all('a')
-    # 0 = modpack icon
-    # 1 = modpack url
-    # 2 = modpack author
-    # 3+ = categories
-    url = 'https://www.curseforge.com' + modpack_urls[1]['href']
-    driver.get(url)
+modpack_urls_all = []
 
-# First iterate throug the pageinated lists to get a complete list of urls for all the modpacks.
-# Then, go through those URLs to collect the metadata.
+for page_num in range(1, int(num_pages)):
+    driver.get(dependents_url + '?page=' + str(page_num))
+    driver.implicitly_wait(10)
+    sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+    modpack_listing_rows = sub_soup.find_all('li', class_='project-listing-row box py-3 px-4 flex flex-col lg:flex-row lg:items-center mb-2')
+
+    for listing_row in range(0, len(modpack_listing_rows)):
+        modpack_urls = modpack_listing_rows[listing_row].find_all('a')
+        MODPACK_ICON = 0
+        MODPACK_NAME = 1
+        MODPACK_AUTHOR = 2
+        # 3+ = categories
+        url = 'https://www.curseforge.com' + modpack_urls[MODPACK_NAME]['href']
+        modpack_urls_all.append(url)
+        # driver.get(url)
+
+print(modpack_urls_all)
 
 driver.quit()
