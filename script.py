@@ -17,8 +17,7 @@ def get_modpack_urls_list(url):
         driver.get(new_page_url)
         sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-    modpack_listing_rows = sub_soup.find_all(
-        'li', class_='project-listing-row box py-3 px-4 flex flex-col lg:flex-row lg:items-center mb-2')
+        modpack_listing_rows = sub_soup.find_all('li', class_='project-listing-row')
 
         for listing_row in range(0, len(modpack_listing_rows)):
             modpack_urls = modpack_listing_rows[listing_row].find_all('a')
