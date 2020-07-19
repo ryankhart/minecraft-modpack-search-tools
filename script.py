@@ -12,7 +12,6 @@ def get_modpack_urls_list(url):
 
     for page_num in range(1, 2):  # int(num_pages)):
         new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
-        # get_urls_in_current_page(new_page_url)
         
         driver.get(new_page_url)
         sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
