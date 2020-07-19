@@ -20,6 +20,19 @@ def get_urls_in_current_page(page_url):
         modpack_urls_all.append(url)
 
 
+def scrape_modpack_pages(urls):
+    for url in urls:
+        driver.get(url)
+        driver.implicitly_wait(WAIT)
+        sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
+        project_id      = sub_soup.find(text='Project ID'      ).parent.findNext('span').contents[0]
+        date_created    = sub_soup.find(text='Created'         ).parent.findNext('span').contents[0]
+        date_updated    = sub_soup.find(text='Updated'         ).parent.findNext('span').contents[0]
+        downloads       = sub_soup.find(text='Total Downloads' ).parent.findNext('span').contents[0]
+        project_license = sub_soup.find(text='License'         ).parent.findNext('span').contents[0]
+        
+
+
 if __name__ == "__main__":
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
     modpack_urls_all = []
