@@ -51,7 +51,6 @@ if __name__ == "__main__":
     driver.implicitly_wait(10)
 
     modpack_urls_all = get_modpack_urls_list(DEPENDENTS_URL)
-    print(modpack_urls_all)
     
     scrape_modpack_pages(modpack_urls_all)
 
