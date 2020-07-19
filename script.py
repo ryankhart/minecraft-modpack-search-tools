@@ -4,7 +4,7 @@ from selenium import webdriver
 
 def get_urls_in_current_page(page_url):
     driver.get(page_url)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(WAIT)
     sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     modpack_listing_rows = sub_soup.find_all(
@@ -35,12 +35,13 @@ def scrape_modpack_pages(urls):
 
 if __name__ == "__main__":
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
+    WAIT = 10
     modpack_urls_all = []
 
     driver = webdriver.Chrome()
 
     driver.get(DEPENDENTS_URL)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(WAIT)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     pagination_items = soup.find_all('a', class_='pagination-item')
     num_pages = pagination_items[len(pagination_items)-1].text
