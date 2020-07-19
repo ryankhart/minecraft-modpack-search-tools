@@ -40,26 +40,19 @@ def scrape_modpack_pages(urls):
         date_updated    = sub_soup.find(text='Updated'         ).parent.findNext('span').contents[0]
         downloads       = sub_soup.find(text='Total Downloads' ).parent.findNext('span').contents[0]
         project_license = sub_soup.find(text='License'         ).parent.findNext('span').contents[0]
+        # TODO: figure out a good data structure to store these in.
         
 
 
 if __name__ == "__main__":
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
-    WAIT = 10
-    modpack_urls_all = []
 
     driver = webdriver.Chrome()
+    driver.implicitly_wait(10)
 
-    driver.get(DEPENDENTS_URL)
-    driver.implicitly_wait(WAIT)
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
-    pagination_items = soup.find_all('a', class_='pagination-item')
-    num_pages = pagination_items[len(pagination_items)-1].text
-
-    for page_num in range(1, int(num_pages)):
-        new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
-        get_urls_in_current_page(new_page_url)
-
-    scrape_modpack_pages(modpack_urls_all)
+    modpack_urls_all = get_modpack_urls_list(DEPENDENTS_URL)
+    print(modpack_urls_all)
+    
+    # scrape_modpack_pages(modpack_urls_all)
 
     driver.quit()
