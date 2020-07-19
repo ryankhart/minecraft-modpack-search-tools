@@ -34,7 +34,6 @@ def get_modpack_urls_list(url):
 def scrape_modpack_pages(urls):
     for url in urls:
         driver.get(url)
-        driver.implicitly_wait(WAIT)
         sub_soup = BeautifulSoup(driver.page_source, 'html.parser')
         project_id      = sub_soup.find(text='Project ID'      ).parent.findNext('span').contents[0]
         date_created    = sub_soup.find(text='Created'         ).parent.findNext('span').contents[0]
