@@ -50,4 +50,6 @@ if __name__ == "__main__":
         new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
         get_urls_in_current_page(new_page_url)
 
+    scrape_modpack_pages(modpack_urls_all)
+
     driver.quit()
