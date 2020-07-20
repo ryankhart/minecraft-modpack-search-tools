@@ -41,6 +41,8 @@ def scrape_modpack_pages(urls):
         project_license = sub_soup.find(text='License'         ).parent.findNext('span').contents[0]
         # TODO: figure out a good data structure to store these in.
         
+def webdriver_load_from_path(path):
+    driver.get(CURSEFORGE_DOMAIN + path)
 
 
 if __name__ == "__main__":
