@@ -4,6 +4,7 @@
 ```
 pip3 install beautifulsoup4
 pip3 install selenium
+pip3 install lxml
 ```
 Make sure that Google Chrome is installed in the default location it picks on your PC.
 
