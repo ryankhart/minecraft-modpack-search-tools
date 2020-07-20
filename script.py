@@ -43,6 +43,7 @@ def initialize_json_file():
 def get_license_path(project_id):
     return '/project/' + project_id + '/license'
 
+
 def scrape_modpack_pages(paths):
     ALL_FILES_REL_PATH = '/files/all'
     initialize_json_file()
