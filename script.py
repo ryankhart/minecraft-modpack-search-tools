@@ -8,7 +8,7 @@ def get_modpack_urls_list(url):
     pagination_items = soup.find_all('a', class_='pagination-item')
     num_pages = pagination_items[len(pagination_items)-1].text
     
-    retVal = []
+    return_value = []
 
     for page_num in range(1, 2):  # int(num_pages)):
         new_page_url = DEPENDENTS_URL + '?page=' + str(page_num)
