@@ -101,7 +101,15 @@ if __name__ == "__main__":
     CURSEFORGE_DOMAIN = 'https://www.curseforge.com'
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
 
-    driver = webdriver.Chrome()
+    option = webdriver.ChromeOptions()
+    chrome_prefs = {}
+    option.experimental_options["prefs"] = chrome_prefs
+    chrome_prefs["profile.default_content_settings"] = {"images": 2}
+    chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
+    
+    chrome_prefs['profile.managed_default_content_settings.javascript'] = 2
+
+    driver = webdriver.Chrome(options=option)
     # TODO: find a way to block images from loading to speed it up
     driver.implicitly_wait(10)
 
