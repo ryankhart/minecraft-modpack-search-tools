@@ -55,7 +55,7 @@ def scrape_modpack_pages(paths):
         header = soup.find('header')
         
         # Header
-        project_name    = header.find('h2').contents[0]
+        project_name = header.find('h2').contents[0]
         
         # Aside
         project_id      = aside.find(text=re.compile('Project ID'     )).parent.findNext('span').contents[0]
