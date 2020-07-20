@@ -104,13 +104,15 @@ if __name__ == "__main__":
     option = webdriver.ChromeOptions()
     chrome_prefs = {}
     option.experimental_options["prefs"] = chrome_prefs
+    
+    # Disable images
     chrome_prefs["profile.default_content_settings"] = {"images": 2}
     chrome_prefs["profile.managed_default_content_settings"] = {"images": 2}
     
+    # Disable Javascript
     chrome_prefs['profile.managed_default_content_settings.javascript'] = 2
 
     driver = webdriver.Chrome(options=option)
-    # TODO: find a way to block images from loading to speed it up
     driver.implicitly_wait(10)
 
     #TODO: put get_modpack_paths_list() and scrape_modpack_pages() into 2 separate scripts maybe?
