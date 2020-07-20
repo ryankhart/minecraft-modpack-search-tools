@@ -46,6 +46,7 @@ def webdriver_load_from_path(path):
 
 
 if __name__ == "__main__":
+    CURSEFORGE_DOMAIN = 'https://www.curseforge.com'
     DEPENDENTS_URL = 'https://www.curseforge.com/minecraft/mc-mods/logistics-pipes/relations/dependents'
 
     driver = webdriver.Chrome()
