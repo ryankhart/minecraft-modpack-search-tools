@@ -13,7 +13,7 @@ def get_modpack_paths_list(url):
     return_value = []
 
     for page_num in range(1, int(num_pages)):
-        new_page_url = url + '?page=' + str(page_num)
+        new_page_url = url + '&page=' + str(page_num)
         
         driver.get(new_page_url)
         soup = BeautifulSoup(driver.page_source, 'lxml')
