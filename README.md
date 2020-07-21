@@ -3,7 +3,7 @@ This is a very work-in-progress, alpha version of a set of tools I'm developing 
 
 In its current stage, to use it, you will need to actually alter the code until I eventually get it working with command-line arguments, and maybe eventually a graphical user interface, if I take it that far.
 
-Below, is a gif showing an example of how it should look when it's set up as expected.
+Below, is a gif showing an example of how it should look when it's set up as expected. In this example, I want to find a list of all the modpacks that include Gregtech Community Edition, filter that list to only show modpacks that are on Minecraft version 1.12.2, then sort them by total downloads.
 
 ## Demo
 ![](demo1.gif)
