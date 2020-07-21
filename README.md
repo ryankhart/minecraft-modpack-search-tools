@@ -1,6 +1,9 @@
 # minecraft-modpack-search-tools
 
-# Instructions
+## Demo
+![](demo1.gif)
+
+## Instructions
 ```
 pip3 install beautifulsoup4
 pip3 install selenium
