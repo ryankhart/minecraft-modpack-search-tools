@@ -7,7 +7,7 @@ def filter_by_game_version(data, game_version_list):
 
 
 def sort_by_key(data, key, should_reverse=False):
-    return sorted(data, key=lambda i: int(i[key].replace(',', '')), reverse=should_reverse)
+    return sorted(data, key=lambda i: i[key], reverse=should_reverse)
 
 
 def print_list(data, exclude_keys=[]):
