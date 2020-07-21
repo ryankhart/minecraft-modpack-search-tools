@@ -13,7 +13,7 @@ def sort_by_key(data, key, should_reverse=False):
 def print_list(data, exclude_keys=[]):
     for d in data:
         print('Project Name: ' + d['project_name'])
-        print('Total Downloads: ' + d['total_downloads'])
+        print('Total Downloads: ' + str(d['total_downloads']))
         print('Last Updated: ' + time.strftime('%Y-%m-%d', time.localtime(int(d['date_updated']))))
         print()
 
