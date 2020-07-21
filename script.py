@@ -66,9 +66,9 @@ def scrape_modpack_pages(paths):
         
         # Files (for a list of game versions)
         # TODO: Fix it so that it just passes over modpacks that don't have any files, like "AlliedKingdom In The Sky"
-        table = soup.findChildren('table')[0]
-        header_row = table.findChildren('th')
-        rows = table.findChildren('td')
+        table = soup.find_all('table')[0]
+        header_row = table.find_all('th')
+        rows = table.find_all('td')
         version_col = -1
         for col_counter in range(0, len(header_row)):
             header = header_row[col_counter].get_text().strip()
