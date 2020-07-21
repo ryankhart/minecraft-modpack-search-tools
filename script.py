@@ -70,14 +70,14 @@ def scrape_modpack_pages(paths):
         header_row = table.findChildren('th')
         rows = table.findChildren('td')
         version_col = -1
-        for i in range(0, len(header_row)):
-            header = header_row[i].get_text().strip()
+        for col_counter in range(0, len(header_row)):
+            header = header_row[col_counter].get_text().strip()
             if 'version' in header.lower():
-                version_col = i
+                version_col = col_counter
         game_versions = set()
-        for i in range(1, len(rows)):
-            if i == version_col:
-                game_versions.add(rows[i].get_text().strip().split('\n')[0].strip())
+        for col_counter in range(1, len(rows)):
+            if col_counter == version_col:
+                game_versions.add(rows[col_counter].get_text().strip().split('\n')[0].strip())
         
         metadata = {
             'project_name'   : project_name   ,
