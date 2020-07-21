@@ -12,6 +12,7 @@ def sort_by(data):
 def print_list(data):
     pass
 
+
 if __name__ == "__main__":
     pass
     with open('data.json', "r") as data_file:
