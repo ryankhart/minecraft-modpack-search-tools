@@ -62,6 +62,7 @@ def scrape_modpack_pages(paths):
         date_created    = aside.find(text=re.compile('Created'        )).parent.findNext('span').find('abbr', class_='standard-datetime')['data-epoch']
         date_updated    = aside.find(text=re.compile('Updated'        )).parent.findNext('span').find('abbr', class_='standard-datetime')['data-epoch']
         total_downloads = aside.find(text=re.compile('Total Downloads')).parent.findNext('span').contents[0]
+        # TODO: collect "membors" data
         
         # Files (for a list of game versions)
         # TODO: Fix it so that it just passes over modpacks that don't have any files, like "AlliedKingdom In The Sky"
