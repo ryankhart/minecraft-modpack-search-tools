@@ -58,15 +58,22 @@ def scrape_modpack_pages(paths):
         project_name = header.find('h2').contents[0]
         
         # Aside
-        project_id      = aside.find(text=re.compile('Project ID'     )).parent.find_next('span').contents[0]
-        date_created    = aside.find(text=re.compile('Created'        )).parent.find_next('span').find('abbr', class_='standard-datetime')['data-epoch']
-        date_updated    = aside.find(text=re.compile('Updated'        )).parent.find_next('span').find('abbr', class_='standard-datetime')['data-epoch']
-        total_downloads = aside.find(text=re.compile('Total Downloads')).parent.find_next('span').contents[0]
+        project_id       = aside.find(text=re.compile('Project ID'     )).parent.find_next('span').contents[0]
+        date_created     = aside.find(text=re.compile('Created'        )).parent.find_next('span').find('abbr', class_='standard-datetime')['data-epoch']
+        date_updated_tag = aside.find(text=re.compile('Updated'        )).parent.find_next('span').find('abbr', class_='standard-datetime')
+        try:
+            date_updated = date_updated_tag['data-epoch']
+        except:
+            continue
+        total_downloads  = aside.find(text=re.compile('Total Downloads')).parent.find_next('span').contents[0]
         # TODO: collect "members" data
         
         # Files (for a list of game versions)
         # TODO: Fix it so that it just passes over modpacks that don't have any files, like "AlliedKingdom In The Sky"
-        table = soup.find_all('table')[0]
+        try:
+            table = soup.find_all('table')[0]
+        except:
+            continue
         header_row = table.find_all('th')
         rows = table.find_all('td')
         version_col = -1
@@ -121,5 +128,6 @@ if __name__ == "__main__":
     modpack_paths = get_modpack_paths_list(DEPENDENTS_URL)
     
     scrape_modpack_pages(modpack_paths)
+    # scrape_modpack_pages(['/minecraft/modpacks/alliedkingdom-in-the-sky'])
 
     driver.quit()
