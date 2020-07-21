@@ -58,10 +58,10 @@ def scrape_modpack_pages(paths):
         project_name = header.find('h2').contents[0]
         
         # Aside
-        project_id      = aside.find(text=re.compile('Project ID'     )).parent.findNext('span').contents[0]
-        date_created    = aside.find(text=re.compile('Created'        )).parent.findNext('span').find('abbr', class_='standard-datetime')['data-epoch']
-        date_updated    = aside.find(text=re.compile('Updated'        )).parent.findNext('span').find('abbr', class_='standard-datetime')['data-epoch']
-        total_downloads = aside.find(text=re.compile('Total Downloads')).parent.findNext('span').contents[0]
+        project_id      = aside.find(text=re.compile('Project ID'     )).parent.find_next('span').contents[0]
+        date_created    = aside.find(text=re.compile('Created'        )).parent.find_next('span').find('abbr', class_='standard-datetime')['data-epoch']
+        date_updated    = aside.find(text=re.compile('Updated'        )).parent.find_next('span').find('abbr', class_='standard-datetime')['data-epoch']
+        total_downloads = aside.find(text=re.compile('Total Downloads')).parent.find_next('span').contents[0]
         # TODO: collect "members" data
         
         # Files (for a list of game versions)
