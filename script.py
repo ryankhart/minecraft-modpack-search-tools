@@ -66,6 +66,7 @@ def scrape_modpack_pages(paths):
         except:
             continue
         total_downloads  = aside.find(text=re.compile('Total Downloads')).parent.find_next('span').contents[0]
+        total_downloads  = int(total_downloads.replace(',', ''))
         # TODO: collect "members" data
         
         # Files (for a list of game versions)
