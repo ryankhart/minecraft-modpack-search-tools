@@ -75,7 +75,6 @@ def scrape_modpack_pages(paths):
         # TODO: collect "members" data
         
         # Files (for a list of game versions)
-        # TODO: Fix it so that it just passes over modpacks that don't have any files, like "AlliedKingdom In The Sky"
         try:
             table = soup.find_all('table')[0]
         except:
