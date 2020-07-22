@@ -21,6 +21,11 @@ def get_modpack_paths_list(url):
         modpack_listing_rows = soup.find_all('li', class_='project-listing-row')
 
         for listing_row in range(0, len(modpack_listing_rows)):
+            # Expected list of 'a' tags for modpack_urls:
+            # 0  - modpack icon
+            # 1  - modpack name
+            # 2  - modpack author name
+            # 3+ - modpack category icons
             modpack_urls = modpack_listing_rows[listing_row].find_all('a')
             path = modpack_urls[1]['href'] # TODO: do the .parent.findNext() thing on this later for robustness
             return_value.append(path)
