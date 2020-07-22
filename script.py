@@ -133,6 +133,5 @@ if __name__ == "__main__":
     modpack_paths = get_modpack_paths_list(DEPENDENTS_URL)
     
     scrape_modpack_pages(modpack_paths)
-    # scrape_modpack_pages(['/minecraft/modpacks/alliedkingdom-in-the-sky'])
 
     driver.quit()
